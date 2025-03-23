@@ -1,3 +1,34 @@
+/* based on https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/v1.6.0/style.css */
+
+/* General Body Styles - Modernized */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /*background-color: #f8f9fa; /* Light gray background - More subtle */
+  background-color: #f0f2f5; /* A slightly lighter gray */
+  /*color: #343a40; /* Dark gray text - Keep this for good contrast */
+  color: #495057; /* A slightly lighter text color */
+  line-height: 1.6;
+}
+
+/* Gradio Container (Main UI Area) - Modernized */
+.gradio-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  /*background-color: #fff; /* White background - A bit harsh */
+  background-color: #ffffff; /* A softer white */
+  border-radius: 0.75rem; /* More rounded corners */
+  /*box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08); /* Slightly more subtle shadow */
+}
+
+/* Headings (Markdown) - Modernized */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #212529; /* Keep the darker color for headings */
+}
+
 /* Loader */
 .loader-container {
   display: flex;
@@ -7,7 +38,8 @@
 
 .loader {
   border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
+  /*border-top: 8px solid #3498db; /* Blue - Consider a different color */
+  border-top: 8px solid #29abe2; /* A lighter, more modern blue */
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -19,39 +51,44 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Progress Bar */
-/* IMPORTANT: Adapt these selectors to match Fooocus's actual progress bar classes */
-.progress-container {  /* You might need to change this */
+/* Progress Bar - Modernized */
+progress {
+  appearance: none;
+  height: 20px;
+  border-radius: 10px; /* More rounded progress bar */
+  background-color: #e9ecef; /* Lighter gray background */
+  width: 100%;
+  vertical-align: middle !important;
+}
+
+/* Progress Bar Container */
+.progress-container {
   margin-left: 20px;
   margin-right: 20px;
   flex-grow: 1;
 }
 
-progress { /* You might need to change this */
-  appearance: none;
-  height: 20px;
-  border-radius: 5px;
-  background-color: #f3f3f3;
-  width: 100%;
-  vertical-align: middle !important;
+progress::-webkit-progress-value {
+  /*background-color: #3498db; /* Blue - Change this to match loader */
+  background-color: #29abe2;
+  border-radius: 10px; /* Match corner radius */
 }
 
-progress::-webkit-progress-value { /* You might need to change this */
-  background-color: #3498db;
+progress::-moz-progress-bar {
+  /*background-color: #3498db; /* Blue - Change this to match loader */
+  background-color: #29abe2;
+  border-radius: 10px; /* Match corner radius */
 }
 
-progress::-moz-progress-bar { /* You might need to change this */
-  background-color: #3498db;
-}
-
-progress::after { /* You might need to change this */
+progress::after {
   content: attr(value '%');
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 14px;
+  /*font-size: 14px; /* Smaller font size */
+  font-size: 0.875rem; /* Equivalent to 14px */
 }
 
 .loader-container > span {
@@ -62,22 +99,23 @@ progress::after { /* You might need to change this */
   display: none !important;
 }
 
-.progress-bar{
+.progress-bar {
   height: 30px !important;
 }
 
 .progress-bar span {
-    text-align: right;
-    width: 215px;
+  text-align: right;
+  width: 215px;
 }
 
+/* Prompts - Keep as is, assuming they're fine */
 div:has(> #positive_prompt) {
-    border: none;
+  border: none;
 }
 
 #positive_prompt {
-    padding: 1px;
-    background: var(--background-fill-primary);
+  padding: 1px;
+  background: var(--background-fill-primary);
 }
 
 .type_row {
@@ -109,19 +147,19 @@ div:has(> #positive_prompt) {
 }
 
 .performance_selection label {
-    width: 140px !important;
+  width: 140px !important;
 }
 
 .aspect_ratios label {
-    flex: calc(50% - 5px) !important;
+  flex: calc(50% - 5px) !important;
 }
 
 .aspect_ratios label span {
-    white-space: nowrap !important;
+  white-space: nowrap !important;
 }
 
 .aspect_ratios label input {
-    margin-left: -5px !important;
+  margin-left: -5px !important;
 }
 
 .lora_enable label {
@@ -142,39 +180,49 @@ div:has(> #positive_prompt) {
   }
 }
 
-#context-menu{
-    z-index:9999;
-    position:absolute;
-    display:block;
-    padding:0px 0;
-    border:2px solid #a55000;
-    border-radius:8px;
-    box-shadow:1px 1px 2px #CE6400;
-    width: 200px;
+/* Context Menu - Consider restyling for a cleaner look */
+#context-menu {
+  z-index: 9999;
+  position: absolute;
+  display: block;
+  padding: 0px 0;
+  /*border: 2px solid #a55000; /* Orange/Brown - Outdated */
+  border: 1px solid #ced4da; /* Light gray border */
+  border-radius: 8px;
+  /*box-shadow: 1px 1px 2px #CE6400; /* Shadow - Remove or make more subtle */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08); /* More subtle shadow */
+  width: 200px;
+  background-color: #fff; /* White background */
 }
 
-.context-menu-items{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.context-menu-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.context-menu-items a{
-    display:block;
-    padding:5px;
-    cursor:pointer;
+.context-menu-items a {
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+  color: #212529; /* Dark text */
+  text-decoration: none; /* Remove underlines */
 }
 
-.context-menu-items a:hover{
-    background: #a55000;
+.context-menu-items a:hover {
+  /*background: #a55000; /* Orange/Brown on hover - Outdated */
+  background: #e9ecef; /* Light gray on hover */
+  color: #000; /* Set text to black */
 }
 
+/* Canvas Tooltip - Modernized */
 .canvas-tooltip-info {
   position: absolute;
   top: 28px;
   left: 2px;
   cursor: help;
-  background-color: rgba(0, 0, 0, 0.3);
+  /*background-color: rgba(0, 0, 0, 0.3); /* Dark - Make it lighter */
+  background-color: rgba(0, 0, 0, 0.15); /* Lighter gray */
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -182,8 +230,8 @@ div:has(> #positive_prompt) {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   z-index: 100;
+  color: #fff; /* Ensure text is white */
 }
 
 .canvas-tooltip-info::after {
@@ -205,7 +253,8 @@ div:has(> #positive_prompt) {
 
 .canvas-tooltip-content {
   display: none;
-  background-color: #f9f9f9;
+  /*background-color: #f9f9f9; /* Light gray - Change */
+  background-color: #fff; /* White background */
   color: #333;
   border: 1px solid #ddd;
   padding: 15px;
@@ -216,8 +265,7 @@ div:has(> #positive_prompt) {
   font-size: 16px;
   opacity: 0;
   border-radius: 8px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 100;
 }
 
@@ -228,77 +276,86 @@ div:has(> #positive_prompt) {
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
+/* Other Styles - Leave these as is for now */
 .styler {
-  overflow:inherit !important;
+  overflow: inherit !important;
 }
 
-.gradio-container{
+.gradio-container {
   overflow: visible;
 }
 
 /* fullpage image viewer */
 
-#lightboxModal{
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(20, 20, 20, 0.95);
-    user-select: none;
-    -webkit-user-select: none;
-    flex-direction: column;
+#lightboxModal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(20, 20, 20, 0.95);
+  user-select: none;
+  -webkit-user-select: none;
+  flex-direction: column;
 }
 
 .modalControls {
-    display: flex;
-    position: absolute;
-    right: 0px;
-    left: 0px;
-    gap: 1em;
-    padding: 1em;
-    background-color:rgba(0,0,0,0);
-    z-index: 1;
-    transition: 0.2s ease background-color;
-}
-.modalControls:hover {
-    background-color:rgba(0,0,0,0.9);
-}
-.modalClose {
-    margin-left: auto;
-}
-.modalControls span{
-    color: white;
-    text-shadow: 0px 0px 0.25em black;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 1em;
+  display: flex;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  gap: 1em;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+  transition: 0.2s ease background-color;
 }
 
-.modalControls span:hover, .modalControls span:focus{
-    color: #999;
-    text-decoration: none;
+.modalControls:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modalClose {
+  margin-left: auto;
+}
+
+.modalControls span {
+  color: white;
+  text-shadow: 0px 0px 0.25em black;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 1em;
+}
+
+.modalControls span:hover,
+.modalControls span:focus {
+  color: #999;
+  text-decoration: none;
 }
 
 #lightboxModal > img {
-    display: block;
-    margin: auto;
-    width: auto;
+  display: block;
+  margin: auto;
+  width: auto;
 }
 
-#lightboxModal > img.modalImageFullscreen{
-    object-fit: contain;
-    height: 100%;
-    width: 100%;
-    min-height: 0;
+#lightboxModal > img.modalImageFullscreen {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
 }
 
 .modalPrev,
@@ -329,36 +386,36 @@ div:has(> #positive_prompt) {
 }
 
 #imageARPreview {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border: 2px solid red;
-    background: rgba(255, 0, 0, 0.3);
-    z-index: 900;
-    pointer-events: none;
-    display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 2px solid red;
+  background: rgba(255, 0, 0, 0.3);
+  z-index: 900;
+  pointer-events: none;
+  display: none;
 }
 
 #stylePreviewOverlay {
-    opacity: 0;
-    pointer-events: none;
-    width: 128px;
-    height: 128px;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    border: solid 1px lightgrey;
-    transform: translate(-140px, 20px);
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    z-index: 100;
-    transition: transform 0.1s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  width: 128px;
+  height: 128px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  border: solid 1px lightgrey;
+  transform: translate(-140px, 20px);
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  z-index: 100;
+  transition: transform 0.1s ease, opacity 0.3s ease;
 }
 
 #stylePreviewOverlay.lower-half {
-    transform: translate(-140px, -140px);
+  transform: translate(-140px, -140px);
 }
 
 /* scrollable box for style selections */
@@ -380,19 +437,22 @@ div:has(> #positive_prompt) {
 }
 
 .contain .tabs .tabitem.style_selections_tab .style_selections .wrap[data-testid="checkbox-group"] {
-  position: absolute; /* remove this to disable scrolling within the checkbox-group */
+  position: absolute;
+  /* remove this to disable scrolling within the checkbox-group */
   overflow: auto;
   padding-right: 2px;
   max-height: 100%;
 }
 
 .contain .tabs .tabitem.style_selections_tab .style_selections .wrap[data-testid="checkbox-group"] label {
-  /* max-width: calc(35% - 15px) !important; */ /* add this to enable 3 columns layout */
+  /* max-width: calc(35% - 15px) !important; */
+  /* add this to enable 3 columns layout */
   flex: calc(50% - 5px) !important;
 }
 
 .contain .tabs .tabitem.style_selections_tab .style_selections .wrap[data-testid="checkbox-group"] label span {
-  /* white-space:nowrap; */ /* add this to disable text wrapping (better choice for 3 columns layout) */
+  /* white-space:nowrap; */
+  /* add this to disable text wrapping (better choice for 3 columns layout) */
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -403,13 +463,111 @@ div:has(> #positive_prompt) {
   font-family: monospace;
   text-align: center;
   border-radius: 5px 5px 0px 0px;
-  display: none; /* remove this to enable tooltip in preview image */
+  display: none;
+  /* remove this to enable tooltip in preview image */
 }
 
 #inpaint_canvas .canvas-tooltip-info {
   top: 2px;
 }
 
-#inpaint_brush_color input[type=color]{
+#inpaint_brush_color input[type=color] {
   background: none;
+}
+/* Buttons - Modernized and made consistent */
+.gr-button {
+  /*  background-color: #007bff; /* Primary blue */
+  background-color: #4CAF50; /* A more modern green */
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem; /* More rounded corners */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.gr-button:hover {
+  /* background-color: #0056b3; /* Darker blue on hover */
+  background-color: #388E3C; /* A darker green on hover */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+.gr-button:focus {
+  outline: none;
+  /* box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle blue outline - Consider a green one */
+  box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.5); /* Green outline */
+}
+
+/* Textboxes and Inputs - Modernized */
+.gr-textbox .gr-text-input,
+.gr-number,
+.gr-dropdown .gr-dropdown-select {
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem; /* More rounded */
+  padding: 0.6rem 0.85rem; /* Slightly larger padding */
+  font-size: 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.gr-textbox .gr-text-input:focus,
+.gr-number:focus,
+.gr-dropdown .gr-dropdown-select:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Sliders - Modernized */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.5rem;
+  background: #d3d3d3;
+  border-radius: 0.5rem; /* Make the slider more rounded */
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: #4CAF50; /* Change the slider thumb color to match the buttons */
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+
+/* Images - Modernized */
+.gr-image img {
+  border-radius: 0.75rem; /* Make images more rounded */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tabs */
+.tabitem {
+    padding: 10px; /* add padding to the content inside the tabs */
+}
+
+.tab-nav > button {
+    background-color: #f0f2f5 !important; /* change the background color of the tabs */
+    color: #495057 !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+    margin-right: 0.25rem !important;
+}
+
+.tab-nav > button:hover {
+    background-color: #e2e6ea !important; /* change the background color on hover */
+}
+
+.tab-nav > button.selected {
+    background-color: #007bff !important; /* highlight the selected tab */
+    color: white !important;
+    border-color: #007bff !important;
 }
